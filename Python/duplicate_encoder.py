@@ -34,40 +34,67 @@ class DuplicateEncoderTestCase(unittest.TestCase):
         """
         Test all unique
         """
-        self.assertEqual(duplicate_encode("din"), "(((")
+        word = "din"
+        res = duplicate_encode(word)
+        self.assertEqual(res, "(((")
+
+        # test argument mutation
+        self.assertAlmostEqual(word, "din")
 
     def test_2(self):
         """
         Test repeating
         """
-        self.assertEqual(duplicate_encode("recede"), "()()()")
+        word = "recede"
+        res = duplicate_encode(word)
+        self.assertEqual(res, "()()()")
+
+        # test argument mutation
+        self.assertAlmostEqual(word, "recede")
 
     def test_3(self):
         """
         Test mixed case
         """
-        self.assertEqual(duplicate_encode("Success"), ")())())")
+        word = "Success"
+        res = duplicate_encode(word)
+        self.assertEqual(res, ")())())")
+
+        # test argument mutation
+        self.assertAlmostEqual(word, "Success")
 
     def test_4(self):
         """
-        Test mixed case
+        Test other characters
         """
-        self.assertEqual(duplicate_encode("(( @"), "))((")
+        word = "(( @"
+        res = duplicate_encode(word)
+        self.assertEqual(res, "))((")
+
+        # test argument mutation
+        self.assertAlmostEqual(word, "(( @")
 
     def test_5(self):
         """
         Random test
         """
-        self.assertEqual(
-            duplicate_encode("@YSXE xOPxPN LmhZxmqktQa@)qJtX"),
-            ")(()())()))()()(()))())()()())",
-        )
+        word = "@YSXE xOPxPN LmhZxmqktQa@)qJtX"
+        res = duplicate_encode(word)
+        self.assertEqual(res, ")(()())()))()()(()))())()()())")
+
+        # test argument mutation
+        self.assertAlmostEqual(word, "@YSXE xOPxPN LmhZxmqktQa@)qJtX")
 
     def test_6(self):
         """
         Random test
         """
-        self.assertEqual(duplicate_encode(")(()()(()()()"), ")))))))))))))")
+        word = ")(()()(()()()"
+        res = duplicate_encode(word)
+        self.assertEqual(res, ")))))))))))))")
+
+        # test argument mutation
+        self.assertAlmostEqual(word, ")(()()(()()()")
 
 
 if __name__ == "__main__":

@@ -34,19 +34,25 @@ class CategorizeNewMemberTestCase(unittest.TestCase):
         """
         Test 1
         """
-        self.assertEqual(
-            open_or_senior([(45, 12), (55, 21), (19, -2), (104, 20)]),
-            ["Open", "Senior", "Open", "Senior"],
-        )
+        members = [(45, 12), (55, 21), (19, -2), (104, 20)]
+        res = open_or_senior(members)
+
+        self.assertEqual(res, ["Open", "Senior", "Open", "Senior"])
+
+        # test argument mutation
+        self.assertAlmostEqual(members, [(45, 12), (55, 21), (19, -2), (104, 20)])
 
     def test_2(self):
         """
         Test 2
         """
-        self.assertEqual(
-            open_or_senior([(16, 23), (73, 1), (56, 20), (1, -1)]),
-            ["Open", "Open", "Senior", "Open"],
-        )
+        members = [(16, 23), (73, 1), (56, 20), (1, -1)]
+        res = open_or_senior(members)
+
+        self.assertEqual(res, ["Open", "Open", "Senior", "Open"])
+
+        # test argument mutation
+        self.assertAlmostEqual(members, [(16, 23), (73, 1), (56, 20), (1, -1)])
 
 
 if __name__ == "__main__":

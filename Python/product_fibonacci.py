@@ -55,37 +55,56 @@ class ProductFibonacciTestCase(unittest.TestCase):
         """
         Test 1
         """
-        self.assertEqual(productFib(714), [21, 34, True])
+        number = 714
+        res = productFib(number)
+        self.assertEqual(res, [21, 34, True])
+
+        # test argument mutation
+        self.assertAlmostEqual(number, 714)
 
     def test_2(self):
         """
         Test 2
         """
-        self.assertEqual(productFib(800), [34, 55, False])
+        number = 800
+        res = productFib(number)
+        self.assertEqual(res, [34, 55, False])
+
+        # test argument mutation
+        self.assertAlmostEqual(number, 800)
 
     def test_3(self):
         """
         Test 3
         """
-        self.assertEqual(productFib(5895), [89, 144, False])
+        number = 5895
+        res = productFib(number)
+        self.assertEqual(res, [89, 144, False])
+
+        # test argument mutation
+        self.assertAlmostEqual(number, 5895)
 
     def test_4(self):
         """
         Test 4
         """
-        self.assertEqual(productFib(5895), [89, 144, False])
+        number = 1
+        res = productFib(number)
+        self.assertEqual(res, [1, 1, True])
+
+        # test argument mutation
+        self.assertAlmostEqual(number, 1)
 
     def test_5(self):
         """
         Test 5
         """
-        self.assertEqual(productFib(1), [1, 1, True])
+        number = 0
+        res = productFib(number)
+        self.assertEqual(res, [0, 1, True])
 
-    def test_6(self):
-        """
-        Test 6
-        """
-        self.assertEqual(productFib(0), [0, 1, True])
+        # test argument mutation
+        self.assertAlmostEqual(number, 0)
 
 
 if __name__ == "__main__":

@@ -30,19 +30,34 @@ class ComplementaryDNATestCase(unittest.TestCase):
         """
         Test 1
         """
-        self.assertEqual(DNA_strand("AAAA"), "TTTT")
+        dna = "AAAA"
+        res = DNA_strand(dna)
+        self.assertEqual(res, "TTTT")
+
+        # test argument mutation
+        self.assertEqual(dna, "AAAA")
 
     def test_2(self):
         """
         Test 2
         """
-        self.assertEqual(DNA_strand("ATTGC"), "TAACG")
+        dna = "ATTGC"
+        res = DNA_strand(dna)
+        self.assertEqual(res, "TAACG")
+
+        # test argument mutation
+        self.assertEqual(dna, "ATTGC")
 
     def test_3(self):
         """
         Test 3
         """
-        self.assertEqual(DNA_strand("GTAT"), "CATA")
+        dna = "GTAT"
+        res = DNA_strand(dna)
+        self.assertEqual(res, "CATA")
+
+        # test argument mutation
+        self.assertEqual(dna, "GTAT")
 
 
 if __name__ == "__main__":

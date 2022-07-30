@@ -44,6 +44,9 @@ class PhoneNumberTestCase(unittest.TestCase):
 
         self.assertTrue("Invalid input" in str(context.exception))
 
+        # test argument mutation
+        self.assertTrue(test_case, [1, 2, 3, 4, 5, 6, 7, 8, 9, 0, 1])
+
     def test_invalid_array_2(self):
         """
         Test less than 10 elements
@@ -54,6 +57,9 @@ class PhoneNumberTestCase(unittest.TestCase):
             create_phone_number(test_case)
 
         self.assertTrue("Invalid input" in str(context.exception))
+
+        # test argument mutation
+        self.assertTrue(test_case, [1, 2, 3, 4, 5, 6, 7, 8, 9])
 
     def test_invalid_array_3(self):
         """
@@ -66,6 +72,9 @@ class PhoneNumberTestCase(unittest.TestCase):
 
         self.assertTrue("Array should only contain numbers" in str(context.exception))
 
+        # test argument mutation
+        self.assertTrue(test_case, [1, 2, 3, 4, 5, 6, 7, 8, 9, "a"])
+
     def test_invalid_array_4(self):
         """
         Test 2-digit integer
@@ -77,45 +86,68 @@ class PhoneNumberTestCase(unittest.TestCase):
 
         self.assertTrue("Only 1 digit numbers allowed" in str(context.exception))
 
+        # test argument mutation
+        self.assertTrue(test_case, [1, 2, 3, 4, 5, 6, 7, 8, 9, 10])
+
     def test_valid_array_1(self):
         """
         Test valid array
         """
         test_case = [1, 2, 3, 4, 5, 6, 7, 8, 9, 0]
+        res = create_phone_number(test_case)
 
-        self.assertTrue(create_phone_number(test_case), "(123) 456-7890")
+        self.assertTrue(res, "(123) 456-7890")
+
+        # test argument mutation
+        self.assertTrue(test_case, [1, 2, 3, 4, 5, 6, 7, 8, 9, 0])
 
     def test_valid_array_2(self):
         """
         Test valid array
         """
         test_case = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+        res = create_phone_number(test_case)
 
-        self.assertTrue(create_phone_number(test_case), "(111) 111-1111")
+        self.assertTrue(res, "(111) 111-1111")
+
+        # test argument mutation
+        self.assertTrue(test_case, [1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
 
     def test_valid_array_3(self):
         """
         Test valid array
         """
         test_case = [0, 2, 3, 0, 5, 6, 0, 8, 9, 0]
+        res = create_phone_number(test_case)
 
-        self.assertTrue(create_phone_number(test_case), "(023) 056-0890")
+        self.assertTrue(res, "(023) 056-0890")
+
+        # test argument mutation
+        self.assertTrue(test_case, [0, 2, 3, 0, 5, 6, 0, 8, 9, 0])
 
     def test_valid_array_4(self):
         """
         Test valid array
         """
         test_case = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
+        res = create_phone_number(test_case)
 
-        self.assertTrue(create_phone_number(test_case), "(000) 000-0000")
+        self.assertTrue(res, "(000) 000-0000")
+
+        # test argument mutation
+        self.assertTrue(test_case, [0, 0, 0, 0, 0, 0, 0, 0, 0, 0])
 
     def test_valid_array_5(self):
         """
         Test valid array with int as str
         """
         test_case = [1, "2", 3, 4, 5, 6, 7, 8, 9, 0]
+        res = create_phone_number(test_case)
 
-        self.assertTrue(create_phone_number(test_case), "(123) 456-7890")
+        self.assertTrue(res, "(123) 456-7890")
+
+        # test argument mutation
+        self.assertTrue(test_case, [1, "2", 3, 4, 5, 6, 7, 8, 9, 0])
 
 
 if __name__ == "__main__":

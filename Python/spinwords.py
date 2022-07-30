@@ -31,39 +31,56 @@ class SpinwordsTestCase(unittest.TestCase):
         """
         Test 1 word string
         """
-        self.assertEqual(spin_words("Welcome"), "emocleW")
+        sentence = "Welcome"
+        res = spin_words(sentence)
+        self.assertEqual(res, "emocleW")
+
+        # test argument mutation
+        self.assertEqual(sentence, "Welcome")
 
     def test_2(self):
         """
         Test 1 word string
         """
-        self.assertEqual(spin_words("to"), "to")
+        sentence = "to"
+        res = spin_words(sentence)
+        self.assertEqual(res, "to")
+
+        # test argument mutation
+        self.assertEqual(sentence, "to")
 
     def test_3(self):
         """
         Test 1 word string
         """
-        self.assertEqual(spin_words("CodeWars"), "sraWedoC")
+        sentence = "CodeWars"
+        res = spin_words(sentence)
+        self.assertEqual(res, "sraWedoC")
+
+        # test argument mutation
+        self.assertEqual(sentence, "CodeWars")
 
     def test_4(self):
         """
-        Test 1 word string
+        Test multiple words string
         """
-        self.assertEqual(spin_words("to"), "to")
+        sentence = "Hey fellow warriors"
+        res = spin_words(sentence)
+        self.assertEqual(res, "Hey wollef sroirraw")
+
+        # test argument mutation
+        self.assertEqual(sentence, "Hey fellow warriors")
 
     def test_5(self):
         """
         Test multiple words string
         """
-        self.assertEqual(spin_words("Hey fellow warriors"), "Hey wollef sroirraw")
+        sentence = "This sentence is a sentence"
+        res = spin_words(sentence)
+        self.assertEqual(res, "This ecnetnes is a ecnetnes")
 
-    def test_6(self):
-        """
-        Test multiple words string
-        """
-        self.assertEqual(
-            spin_words("This sentence is a sentence"), "This ecnetnes is a ecnetnes"
-        )
+        # test argument mutation
+        self.assertEqual(sentence, "This sentence is a sentence")
 
 
 if __name__ == "__main__":
