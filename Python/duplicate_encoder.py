@@ -58,8 +58,10 @@ class DuplicateEncoderTestCase(unittest.TestCase):
         """
         Random test
         """
-        self.assertEqual(duplicate_encode(
-            "@YSXE xOPxPN LmhZxmqktQa@)qJtX"), ")(()())()))()()(()))())()()())")
+        self.assertEqual(
+            duplicate_encode("@YSXE xOPxPN LmhZxmqktQa@)qJtX"),
+            ")(()())()))()()(()))())()()())",
+        )
 
     def test_6(self):
         """
