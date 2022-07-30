@@ -32,6 +32,7 @@ class PhoneNumberTestCase(unittest.TestCase):
     """
     Unit tests
     """
+
     def test_invalid_array_1(self):
         """
         Test more than 10 elements
@@ -63,7 +64,8 @@ class PhoneNumberTestCase(unittest.TestCase):
         with self.assertRaises(Exception) as context:
             create_phone_number(test_case)
 
-        self.assertTrue("Array should only contain numbers" in str(context.exception))
+        self.assertTrue(
+            "Array should only contain numbers" in str(context.exception))
 
     def test_invalid_array_4(self):
         """
@@ -74,7 +76,8 @@ class PhoneNumberTestCase(unittest.TestCase):
         with self.assertRaises(Exception) as context:
             create_phone_number(test_case)
 
-        self.assertTrue("Only 1 digit numbers allowed" in str(context.exception))
+        self.assertTrue(
+            "Only 1 digit numbers allowed" in str(context.exception))
 
     def test_valid_array_1(self):
         """
