@@ -99,4 +99,3 @@ class ComplementaryDNATestCase(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-    # pig_it("This auto is my string!")
