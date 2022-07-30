@@ -13,7 +13,7 @@ Example: (input --> output)
 import unittest
 
 
-def DNA_strand(dna: str) -> str:
+def dna_strand(dna: str) -> str:
     """
     Returns complementary DNA sequence, replaces A with T, and C with G and vice versa
     """
@@ -31,7 +31,7 @@ class ComplementaryDNATestCase(unittest.TestCase):
         Test 1
         """
         dna = "AAAA"
-        res = DNA_strand(dna)
+        res = dna_strand(dna)
         self.assertEqual(res, "TTTT")
 
         # test argument mutation
@@ -42,7 +42,7 @@ class ComplementaryDNATestCase(unittest.TestCase):
         Test 2
         """
         dna = "ATTGC"
-        res = DNA_strand(dna)
+        res = dna_strand(dna)
         self.assertEqual(res, "TAACG")
 
         # test argument mutation
@@ -53,7 +53,7 @@ class ComplementaryDNATestCase(unittest.TestCase):
         Test 3
         """
         dna = "GTAT"
-        res = DNA_strand(dna)
+        res = dna_strand(dna)
         self.assertEqual(res, "CATA")
 
         # test argument mutation

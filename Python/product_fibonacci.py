@@ -33,7 +33,7 @@ productFib(800) # should return [34, 55, false],
 import unittest
 
 
-def productFib(number: int) -> list[int, bool]:
+def product_fib(number: int) -> list[int, bool]:
     """
     Product Fibonacci
     """
@@ -56,7 +56,7 @@ class ProductFibonacciTestCase(unittest.TestCase):
         Test 1
         """
         number = 714
-        res = productFib(number)
+        res = product_fib(number)
         self.assertEqual(res, [21, 34, True])
 
         # test argument mutation
@@ -67,7 +67,7 @@ class ProductFibonacciTestCase(unittest.TestCase):
         Test 2
         """
         number = 800
-        res = productFib(number)
+        res = product_fib(number)
         self.assertEqual(res, [34, 55, False])
 
         # test argument mutation
@@ -78,7 +78,7 @@ class ProductFibonacciTestCase(unittest.TestCase):
         Test 3
         """
         number = 5895
-        res = productFib(number)
+        res = product_fib(number)
         self.assertEqual(res, [89, 144, False])
 
         # test argument mutation
@@ -89,7 +89,7 @@ class ProductFibonacciTestCase(unittest.TestCase):
         Test 4
         """
         number = 1
-        res = productFib(number)
+        res = product_fib(number)
         self.assertEqual(res, [1, 1, True])
 
         # test argument mutation
@@ -100,7 +100,7 @@ class ProductFibonacciTestCase(unittest.TestCase):
         Test 5
         """
         number = 0
-        res = productFib(number)
+        res = product_fib(number)
         self.assertEqual(res, [0, 1, True])
 
         # test argument mutation
