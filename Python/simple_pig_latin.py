@@ -25,7 +25,7 @@ def pig_it(text: str) -> str:
     return res
 
 
-class ComplementaryDNATestCase(unittest.TestCase):
+class SimplePigLatinTestCase(unittest.TestCase):
     """
     Unit tests
     """
