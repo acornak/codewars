@@ -24,13 +24,13 @@ We can assume any number being passed in will be valid whole number.
 import unittest
 
 
-class add(int):
+class Add(int):
     """
     Pythonic hack to call "func" in succession
     """
 
     def __call__(self, number: int) -> int:
-        return add(self + number)
+        return Add(self + number)
 
 
 class ChainAddingFunctionTestCase(unittest.TestCase):
@@ -43,7 +43,7 @@ class ChainAddingFunctionTestCase(unittest.TestCase):
         Test 1
         """
         test = 1
-        res = add(test)
+        res = Add(test)
         self.assertEqual(res, 1)
 
         # test argument mutation
@@ -53,14 +53,14 @@ class ChainAddingFunctionTestCase(unittest.TestCase):
         """
         Test 2
         """
-        res = add(1)(2)
+        res = Add(1)(2)
         self.assertEqual(res, 3)
 
     def test_3(self):
         """
         Test 3
         """
-        res = add(1)(2)(3)
+        res = Add(1)(2)(3)
         self.assertEqual(res, 6)
 
 
