@@ -27,7 +27,7 @@
 // https://www.codewars.com/kata/550498447451fbbd7600041c/go
 package codewars
 
-func occurence(c []int) map[int]int {
+func Occurence(c []int) map[int]int {
 	res := make(map[int]int)
 
 	for _, num := range c {
@@ -37,7 +37,7 @@ func occurence(c []int) map[int]int {
 	return res
 }
 
-func comp(a, b []int) bool {
+func Comp(a, b []int) bool {
 	if a == nil || b == nil {
 		return false
 	}
@@ -45,8 +45,8 @@ func comp(a, b []int) bool {
 		return false
 	}
 
-	a_occ := occurence(a)
-	b_occ := occurence(b)
+	a_occ := Occurence(a)
+	b_occ := Occurence(b)
 
 	for nr, occ := range a_occ {
 		if _, ok := b_occ[nr*nr]; !ok {
