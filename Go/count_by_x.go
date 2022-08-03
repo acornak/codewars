@@ -16,8 +16,8 @@ import (
 func CountBy(x, n int) []int {
 	var res []int
 
-	for i := x; i <= n; i++ {
-		res = append(res, i)
+	for i := 1; i <= n; i++ {
+		res = append(res, i*x)
 	}
 	return res
 }
@@ -35,9 +35,13 @@ func main() {
 
 	testCases := TestCases{
 		sliceTestCases: []TestCase{
+			{x: 1, n: 1, res: []int{1}},
 			{x: 1, n: 2, res: []int{1, 2}},
 			{x: 1, n: 10, res: []int{1, 2, 3, 4, 5, 6, 7, 8, 9, 10}},
-			{x: 2, n: 5, res: []int{2, 3, 4, 5}},
+			{x: 2, n: 5, res: []int{2, 4, 6, 8, 10}},
+			{x: 3, n: 5, res: []int{3, 6, 9, 12, 15}},
+			{x: 50, n: 5, res: []int{50, 100, 150, 200, 250}},
+			{x: 100, n: 5, res: []int{100, 200, 300, 400, 500}},
 		},
 	}
 
@@ -45,7 +49,7 @@ func main() {
 		if reflect.DeepEqual(CountBy(testCase.x, testCase.n), testCase.res) {
 			fmt.Println("OK")
 		} else {
-			fmt.Printf("ERROR\nexpected %v got instead %v", testCase.res, CountBy(testCase.x, testCase.n))
+			fmt.Printf("ERROR: expected %v got instead %v\n", testCase.res, CountBy(testCase.x, testCase.n))
 		}
 	}
 
