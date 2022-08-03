@@ -14,11 +14,11 @@
 package codewars
 
 func Tribonacci(signature [3]float64, n int) []float64 {
-	if n <= 3 {
-		return signature[:n]
-	}
+	res := signature[:]
 
-	res := []float64{signature[0], signature[1], signature[2]}
+	if n <= 3 {
+		return res[:n]
+	}
 
 	for i := 3; i < n; i++ {
 		res = append(res, res[i-1]+res[i-2]+res[i-3])
