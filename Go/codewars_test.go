@@ -1,7 +1,7 @@
 package codewars
 
 import (
-	"fmt"
+	"math"
 	"testing"
 
 	"github.com/stretchr/testify/assert"
@@ -33,12 +33,10 @@ func TestCountBy(t *testing.T) {
 
 	for _, testCase := range testCases.sliceTestCases {
 		assert.Equal(
-			CountBy(testCase.x, testCase.n),
 			testCase.res,
-			fmt.Sprintf("ERROR: expected %v got instead %v. Args: %v and %v", testCase.res, CountBy(testCase.x, testCase.n), testCase.x, testCase.n),
+			CountBy(testCase.x, testCase.n),
 		)
 	}
-
 }
 
 func TestAreTheyTheSame(t *testing.T) {
@@ -91,10 +89,8 @@ func TestAreTheyTheSame(t *testing.T) {
 		assert.Equal(
 			testCase.res,
 			Comp(testCase.x, testCase.n),
-			fmt.Sprintf("ERROR: expected %v got instead %v. Args: %v and %v", testCase.res, Comp(testCase.x, testCase.n), testCase.x, testCase.n),
 		)
 	}
-
 }
 
 func TestTribonacci(t *testing.T) {
@@ -130,8 +126,128 @@ func TestTribonacci(t *testing.T) {
 		assert.Equal(
 			testCase.res,
 			Tribonacci(testCase.x, testCase.n),
-			fmt.Sprintf("ERROR: expected %v got instead %v. Args: %v and %v", testCase.res, Tribonacci(testCase.x, testCase.n), testCase.x, testCase.n),
 		)
 	}
+}
 
+func TestCountDivisible(t *testing.T) {
+	assert := assert.New(t)
+	type TestCase struct {
+		x   uint64
+		y   uint64
+		k   uint64
+		res uint64
+	}
+
+	type TestCases struct {
+		sliceTestCases []TestCase
+	}
+
+	testCases := TestCases{
+		sliceTestCases: []TestCase{
+			{x: 6, y: 11, k: 2, res: 3},
+			{x: 11, y: 345, k: 17, res: 20},
+			{x: 0, y: 1, k: 7, res: 1},
+			{x: 20, y: 20, k: 8, res: 0},
+			// performance testing
+			{x: 1005, y: math.MaxUint64, k: 109, res: 169236184162472941},
+			{x: 1005, y: uint64(math.MaxInt64), k: 109, res: 84618092081236466},
+			{x: 101, y: uint64(math.MaxInt64), k: 11, res: 838488366986797791},
+			{x: 1005, y: uint64(math.MaxInt32), k: 109, res: 19701675},
+		},
+	}
+	for _, testCase := range testCases.sliceTestCases {
+		assert.Equal(
+			testCase.res,
+			DivisibleCount(testCase.x, testCase.y, testCase.k),
+		)
+	}
+}
+
+func TestMumbling(t *testing.T) {
+	assert := assert.New(t)
+	type TestCase struct {
+		x   string
+		res string
+	}
+
+	type TestCases struct {
+		sliceTestCases []TestCase
+	}
+
+	testCases := TestCases{
+		sliceTestCases: []TestCase{
+			{x: "ZpglnRxqenU", res: "Z-Pp-Ggg-Llll-Nnnnn-Rrrrrr-Xxxxxxx-Qqqqqqqq-Eeeeeeeee-Nnnnnnnnnn-Uuuuuuuuuuu"},
+			{x: "NyffsGeyylB", res: "N-Yy-Fff-Ffff-Sssss-Gggggg-Eeeeeee-Yyyyyyyy-Yyyyyyyyy-Llllllllll-Bbbbbbbbbbb"},
+			{x: "MjtkuBovqrU", res: "M-Jj-Ttt-Kkkk-Uuuuu-Bbbbbb-Ooooooo-Vvvvvvvv-Qqqqqqqqq-Rrrrrrrrrr-Uuuuuuuuuuu"},
+			{x: "EvidjUnokmM", res: "E-Vv-Iii-Dddd-Jjjjj-Uuuuuu-Nnnnnnn-Oooooooo-Kkkkkkkkk-Mmmmmmmmmm-Mmmmmmmmmmm"},
+			{x: "HbideVbxncC", res: "H-Bb-Iii-Dddd-Eeeee-Vvvvvv-Bbbbbbb-Xxxxxxxx-Nnnnnnnnn-Cccccccccc-Ccccccccccc"},
+			{x: "H", res: "H"},
+		},
+	}
+	for _, testCase := range testCases.sliceTestCases {
+		assert.Equal(
+			testCase.res,
+			Accum(testCase.x),
+		)
+	}
+}
+
+func TestNextPerfectSquare(t *testing.T) {
+	assert := assert.New(t)
+	type TestCase struct {
+		x   int64
+		res int64
+	}
+
+	type TestCases struct {
+		sliceTestCases []TestCase
+	}
+
+	testCases := TestCases{
+		sliceTestCases: []TestCase{
+			{x: 121, res: 144},
+			{x: 625, res: 676},
+			{x: 319225, res: 320356},
+			{x: 15241383936, res: 15241630849},
+			{x: 155, res: -1},
+		},
+	}
+	for _, testCase := range testCases.sliceTestCases {
+		assert.Equal(
+			testCase.res,
+			FindNextSquare(testCase.x),
+		)
+	}
+}
+
+func TestSumDigitPow(t *testing.T) {
+	assert := assert.New(t)
+	type TestCase struct {
+		x   uint64
+		y   uint64
+		res []uint64
+	}
+
+	type TestCases struct {
+		sliceTestCases []TestCase
+	}
+
+	testCases := TestCases{
+		sliceTestCases: []TestCase{
+			{x: 1, y: 10, res: []uint64{1, 2, 3, 4, 5, 6, 7, 8, 9}},
+			{x: 1, y: 100, res: []uint64{1, 2, 3, 4, 5, 6, 7, 8, 9, 89}},
+			{x: 10, y: 89, res: []uint64{89}},
+			{x: 10, y: 100, res: []uint64{89}},
+			{x: 90, y: 100, res: nil},
+			{x: 89, y: 135, res: []uint64{89, 135}},
+			{x: 424, y: 670, res: []uint64{518, 598}},
+		},
+	}
+	for _, testCase := range testCases.sliceTestCases {
+		assert.Equal(
+			testCase.res,
+			SumDigPow(testCase.x, testCase.y),
+		)
+	}
 }
