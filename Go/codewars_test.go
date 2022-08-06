@@ -242,6 +242,7 @@ func TestSumDigitPow(t *testing.T) {
 			{x: 90, y: 100, res: nil},
 			{x: 89, y: 135, res: []uint64{89, 135}},
 			{x: 424, y: 670, res: []uint64{518, 598}},
+			{x: 12157692622039623539, y: 12157692622039623539, res: []uint64{12157692622039623539}},
 		},
 	}
 	for _, testCase := range testCases.sliceTestCases {
