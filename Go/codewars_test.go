@@ -285,3 +285,33 @@ func TestFirstNonRepeating(t *testing.T) {
 		)
 	}
 }
+
+func TestRgbToHex(t *testing.T) {
+	assert := assert.New(t)
+	type TestCase struct {
+		r   int
+		g   int
+		b   int
+		res string
+	}
+
+	type TestCases struct {
+		sliceTestCases []TestCase
+	}
+
+	testCases := TestCases{
+		sliceTestCases: []TestCase{
+			{r: 0, g: 0, b: 0, res: "000000"},
+			{r: 1, g: 2, b: 3, res: "010203"},
+			{r: 255, g: 255, b: 255, res: "FFFFFF"},
+			{r: 254, g: 253, b: 252, res: "FEFDFC"},
+			{r: -20, g: 275, b: 125, res: "00FF7D"},
+		},
+	}
+	for _, testCase := range testCases.sliceTestCases {
+		assert.Equal(
+			testCase.res,
+			RGB(testCase.r, testCase.g, testCase.b),
+		)
+	}
+}
