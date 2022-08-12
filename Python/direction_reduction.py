@@ -44,6 +44,8 @@ with the needless directions removed (W<->E or S<->N side by side).
 The Haskell version takes a list of directions with data Direction = North | East | West | South.
 The Clojure version returns nil when the path is reduced to nothing.
 The Rust version takes a slice of enum Direction {North, East, West, South}.
+
+https://www.codewars.com/kata/550f22f4d758534c1100025a
 """
 import unittest
 
@@ -203,112 +205,6 @@ class DirectionReductionTestCase(unittest.TestCase):
                 "EAST",
                 "WEST",
                 "EAST",
-            ],
-        )
-
-    def test_6(self):
-        """
-        Test 6
-        """
-        test = [
-            "WEST",
-            "NORTH",
-            "SOUTH",
-            "EAST",
-            "WEST",
-            "WEST",
-            "WEST",
-            "WEST",
-            "EAST",
-            "WEST",
-            "SOUTH",
-            "EAST",
-            "EAST",
-            "EAST",
-            "NORTH",
-            "SOUTH",
-            "EAST",
-            "EAST",
-            "NORTH",
-        ]
-        res = dir_reduc(test)
-        self.assertEqual(
-            res, ["WEST", "SOUTH", "WEST", "SOUTH", "EAST", "EAST", "SOUTH"]
-        )
-
-        # test argument mutation
-        self.assertEqual(
-            test,
-            [
-                "WEST",
-                "NORTH",
-                "SOUTH",
-                "EAST",
-                "WEST",
-                "WEST",
-                "WEST",
-                "WEST",
-                "EAST",
-                "WEST",
-                "SOUTH",
-                "EAST",
-                "EAST",
-                "EAST",
-                "NORTH",
-                "SOUTH",
-                "EAST",
-                "EAST",
-                "NORTH",
-            ],
-        )
-
-    def test_7(self):
-        """
-        Test 7
-        """
-        test = [
-            "WEST",
-            "NORTH",
-            "SOUTH",
-            "SOUTH",
-            "WEST",
-            "EAST",
-            "WEST",
-            "SOUTH",
-            "EAST",
-            "EAST",
-            "SOUTH",
-            "SOUTH",
-            "NORTH",
-            "NORTH",
-            "NORTH",
-            "SOUTH",
-            "SOUTH",
-        ]
-        res = dir_reduc(test)
-        self.assertEqual(res, ["EAST", "EAST", "NORTH", "WEST", "NORTH", "EAST"])
-
-        # test argument mutation
-        self.assertEqual(
-            test,
-            [
-                "WEST",
-                "NORTH",
-                "SOUTH",
-                "SOUTH",
-                "WEST",
-                "EAST",
-                "WEST",
-                "SOUTH",
-                "EAST",
-                "EAST",
-                "SOUTH",
-                "SOUTH",
-                "NORTH",
-                "NORTH",
-                "NORTH",
-                "SOUTH",
-                "SOUTH",
             ],
         )
 

@@ -315,3 +315,58 @@ func TestRgbToHex(t *testing.T) {
 		)
 	}
 }
+
+func TestComplementaryDNA(t *testing.T) {
+	assert := assert.New(t)
+	type TestCase struct {
+		x   string
+		res string
+	}
+
+	type TestCases struct {
+		sliceTestCases []TestCase
+	}
+
+	testCases := TestCases{
+		sliceTestCases: []TestCase{
+			{x: "AAAA", res: "TTTT"},
+			{x: "ATTGC", res: "TAACG"},
+			{x: "GTAT", res: "CATA"},
+		},
+	}
+	for _, testCase := range testCases.sliceTestCases {
+		assert.Equal(
+			testCase.res,
+			DNAStrand(testCase.x),
+		)
+	}
+}
+
+func TestDirectionReduction(t *testing.T) {
+	assert := assert.New(t)
+	type TestCase struct {
+		x   []string
+		res []string
+	}
+
+	type TestCases struct {
+		sliceTestCases []TestCase
+	}
+
+	testCases := TestCases{
+		sliceTestCases: []TestCase{
+			{x: []string{"NORTH", "SOUTH", "EAST", "WEST"}, res: []string{}},
+			{x: []string{"NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "WEST"}, res: []string{"WEST"}},
+			{x: []string{"NORTH", "WEST", "SOUTH", "EAST"}, res: []string{"NORTH", "WEST", "SOUTH", "EAST"}},
+			{x: []string{"NORTH", "SOUTH", "SOUTH", "EAST", "WEST", "NORTH", "NORTH"}, res: []string{"NORTH"}},
+			{x: []string{"SOUTH", "SOUTH", "EAST", "WEST", "EAST", "NORTH", "NORTH", "WEST", "EAST", "WEST", "EAST"},
+				res: []string{"SOUTH", "SOUTH", "EAST", "NORTH", "NORTH"}},
+		},
+	}
+	for _, testCase := range testCases.sliceTestCases {
+		assert.Equal(
+			testCase.res,
+			DirReduc(testCase.x),
+		)
+	}
+}

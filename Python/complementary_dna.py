@@ -9,6 +9,7 @@ More similar exercise are found here: http://rosalind.info/problems/list-view/ (
 Example: (input --> output)
 "ATTGC" --> "TAACG"
 "GTAT" --> "CATA"
+https://www.codewars.com/kata/554e4a2f232cdd87d9000038
 """
 import unittest
 
