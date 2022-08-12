@@ -17,7 +17,7 @@ def dna_strand(dna: str) -> str:
     """
     Returns complementary DNA sequence, replaces A with T, and C with G and vice versa
     """
-    character_map = {"A": "T", "T": "A", "C": "G", "G": "C"}
+    character_map: dict = {"A": "T", "T": "A", "C": "G", "G": "C"}
     return dna.translate(str.maketrans(character_map))
 
 
