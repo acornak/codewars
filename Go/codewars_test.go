@@ -252,3 +252,36 @@ func TestSumDigitPow(t *testing.T) {
 		)
 	}
 }
+
+func TestFirstNonRepeating(t *testing.T) {
+	assert := assert.New(t)
+	type TestCase struct {
+		x   string
+		res string
+	}
+
+	type TestCases struct {
+		sliceTestCases []TestCase
+	}
+
+	testCases := TestCases{
+		sliceTestCases: []TestCase{
+			{x: "a", res: "a"},
+			{x: "stress", res: "t"},
+			{x: "moonmen", res: "e"},
+			{x: "", res: ""},
+			{x: "abba", res: ""},
+			{x: "aa", res: ""},
+			{x: "~><#~><", res: "#"},
+			{x: "hello world, eh?", res: "w"},
+			{x: "sTreSS", res: "T"},
+			{x: "Go hang a salami, I'm a lasagna hog!", res: ","},
+		},
+	}
+	for _, testCase := range testCases.sliceTestCases {
+		assert.Equal(
+			testCase.res,
+			FirstNonRepeating(testCase.x),
+		)
+	}
+}
