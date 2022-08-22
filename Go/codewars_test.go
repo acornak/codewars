@@ -370,3 +370,29 @@ func TestDirectionReduction(t *testing.T) {
 		)
 	}
 }
+
+func TestReverseList(t *testing.T) {
+	assert := assert.New(t)
+	type TestCase struct {
+		x   []int
+		res []int
+	}
+
+	type TestCases struct {
+		sliceTestCases []TestCase
+	}
+
+	testCases := TestCases{
+		sliceTestCases: []TestCase{
+			{x: nil, res: nil},
+			{x: []int{1, 2, 3, 4}, res: []int{4, 3, 2, 1}},
+			{x: []int{2, 4, 5, 6}, res: []int{6, 5, 4, 2}},
+		},
+	}
+	for _, testCase := range testCases.sliceTestCases {
+		assert.Equal(
+			testCase.res,
+			ReverseList(testCase.x),
+		)
+	}
+}
