@@ -490,7 +490,7 @@ func TestFindTheNumberPlate(t *testing.T) {
 
 	testCases := TestCases{
 		sliceTestCases: []TestCase{
-			{x: 1, res: "aaa004"},
+			{x: 3, res: "aaa004"},
 			{x: 1487, res: "baa489"},
 			{x: 40000, res: "oba041"},
 			{x: 17558423, res: "zzz999"},

@@ -35,17 +35,17 @@ def solution(args: list[int]) -> str:
                 res.append(f"{min(helper)}-{max(helper)}")
             elif len(helper) != 0:
                 for number in helper:
-                    res.append(number)
+                    res.append(str(number))
             if args[i] not in helper:
-                res.append(args[i])
+                res.append(str(args[i]))
             helper.clear()
     if len(helper) >= 3:
         res.append(f"{min(helper)}-{max(helper)}")
     elif len(helper) != 0:
         for number in helper:
-            res.append(number)
+            res.append(str(number))
     else:
-        res.append(args[-1])
+        res.append(str(args[-1]))
     return ",".join(map(str, res))
 
 
@@ -93,5 +93,3 @@ class RangeExtractionTestCase(unittest.TestCase):
 
 if __name__ == "__main__":
     unittest.main()
-    # test = [-3, -2, -1, 2, 10, 15, 16, 18, 19, 20]
-    # solution(test)
