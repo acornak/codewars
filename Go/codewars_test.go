@@ -396,3 +396,112 @@ func TestReverseList(t *testing.T) {
 		)
 	}
 }
+
+func TestRangeExtraction(t *testing.T) {
+	assert := assert.New(t)
+	type TestCase struct {
+		x   []int
+		res string
+	}
+
+	type TestCases struct {
+		sliceTestCases []TestCase
+	}
+
+	testCases := TestCases{
+		sliceTestCases: []TestCase{
+			{x: []int{-6, -3, -2, -1, 0, 1, 3, 4, 5, 7, 8, 9, 10, 11, 14, 15, 17, 18, 19, 20}, res: "-6,-3-1,3-5,7-11,14,15,17-20"},
+			{x: []int{-3, -2, -1, 2, 10, 15, 16, 18, 19, 20, 22}, res: "-3--1,2,10,15,16,18-20,22"},
+			{x: []int{-3, -2}, res: "-3,-2"},
+		},
+	}
+	for _, testCase := range testCases.sliceTestCases {
+		assert.Equal(
+			testCase.res,
+			range_extraction(testCase.x),
+		)
+	}
+}
+
+func TestSnail(t *testing.T) {
+	assert := assert.New(t)
+	type TestCase struct {
+		x   [][]int
+		res []int
+	}
+
+	type TestCases struct {
+		sliceTestCases []TestCase
+	}
+
+	testCases := TestCases{
+		sliceTestCases: []TestCase{
+			{x: [][]int{{1, 2, 3}, {4, 5, 6}, {7, 8, 9}}, res: []int{1, 2, 3, 6, 9, 8, 7, 4, 5}},
+			{x: [][]int{{1, 2, 3, 1}, {4, 5, 6, 4}, {7, 8, 9, 7}, {7, 8, 9, 7}}, res: []int{1, 2, 3, 1, 4, 7, 7, 9, 8, 7, 7, 4, 5, 6, 9, 8}},
+		},
+	}
+	for _, testCase := range testCases.sliceTestCases {
+		assert.Equal(
+			testCase.res,
+			Snail(testCase.x),
+		)
+	}
+}
+
+func TestRot13(t *testing.T) {
+	assert := assert.New(t)
+	type TestCase struct {
+		x   string
+		res string
+	}
+
+	type TestCases struct {
+		sliceTestCases []TestCase
+	}
+
+	testCases := TestCases{
+		sliceTestCases: []TestCase{
+			{x: "EBG13 rknzcyr.", res: "ROT13 example."},
+			{x: "This is my first ROT13 excercise!", res: "Guvf vf zl svefg EBG13 rkprepvfr!"},
+			{x: "123", res: "123"},
+			{x: "@[`{", res: "@[`{"},
+			{x: "How can you tell an extrovert from an\nintrovert at NSA? Va gur ryringbef,\ngur rkgebireg ybbxf ng gur BGURE thl'f fubrf.", res: "Ubj pna lbh gryy na rkgebireg sebz na\nvagebireg ng AFN? In the elevators,\nthe extrovert looks at the OTHER guy's shoes."},
+			{x: "Guvf vf npghnyyl gur svefg xngn V rire znqr. Gunaxf sbe svavfuvat vg! :)", res: "This is actually the first kata I ever made. Thanks for finishing it! :)"},
+		},
+	}
+	for _, testCase := range testCases.sliceTestCases {
+		assert.Equal(
+			testCase.res,
+			Rot13(testCase.x),
+		)
+	}
+}
+
+func TestFindTheNumberPlate(t *testing.T) {
+	assert := assert.New(t)
+	type TestCase struct {
+		x   int
+		res string
+	}
+
+	type TestCases struct {
+		sliceTestCases []TestCase
+	}
+
+	testCases := TestCases{
+		sliceTestCases: []TestCase{
+			{x: 1, res: "aaa004"},
+			{x: 1487, res: "baa489"},
+			{x: 40000, res: "oba041"},
+			{x: 17558423, res: "zzz999"},
+			{x: 43056, res: "rba100"},
+			{x: 234567, res: "aja802"},
+		},
+	}
+	for _, testCase := range testCases.sliceTestCases {
+		assert.Equal(
+			testCase.res,
+			FindTheNumberPlate(testCase.x),
+		)
+	}
+}
